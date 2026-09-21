@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-jetbrains: 'JetBrains Mono', monospace;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @apply bg-studio-50 text-studio-900 dark:bg-studio-950 dark:text-studio-100 font-sans antialiased;
+}
+
+/* Custom scrollbar for creative tool panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-studio-300 dark:bg-studio-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-studio-400 dark:bg-studio-700;
+}
