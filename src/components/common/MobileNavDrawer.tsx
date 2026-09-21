@@ -10,6 +10,17 @@ export function MobileNavDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { href: "/generator", label: "Studio", icon: Sliders },
     { href: "/presets", label: "Presets", icon: Layers },
@@ -18,7 +29,7 @@ export function MobileNavDrawer() {
   ];
 
   return (
-    <div className="md:hidden flex items-center gap-2">
+    <div className="md:hidden flex items-center gap-1.5 sm:gap-2">
       <ThemeToggle />
       <button
         type="button"
@@ -31,12 +42,15 @@ export function MobileNavDrawer() {
 
       {/* Mobile Slide-down Drawer Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 top-20 z-40 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div
+          className="fixed inset-0 top-16 sm:top-20 z-50 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setIsOpen(false)}
+        >
           <div
-            className="w-full bg-white dark:bg-studio-950 border-b border-studio-200 dark:border-studio-800 p-6 shadow-2xl flex flex-col gap-5 animate-in slide-in-from-top-4 duration-200"
+            className="w-full max-w-full bg-white dark:bg-studio-950 border-b border-studio-200 dark:border-studio-800 p-4 sm:p-6 shadow-2xl flex flex-col gap-4 animate-in slide-in-from-top-4 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1.5">
               {navLinks.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href;
                 return (
@@ -44,7 +58,7 @@ export function MobileNavDrawer() {
                     key={href}
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                    className={`flex items-center justify-between px-3.5 py-2.5 sm:py-3 rounded-xl text-sm font-semibold transition-all ${
                       isActive
                         ? "bg-forge-500/10 text-forge-600 dark:text-forge-400 border border-forge-500/20"
                         : "text-studio-700 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-900"
@@ -60,7 +74,7 @@ export function MobileNavDrawer() {
               })}
             </nav>
 
-            <div className="pt-4 border-t border-studio-200 dark:border-studio-800 flex flex-col gap-3">
+            <div className="pt-3 border-t border-studio-200 dark:border-studio-800 flex flex-col gap-2.5">
               <Link
                 href="/generator"
                 onClick={() => setIsOpen(false)}

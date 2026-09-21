@@ -16,6 +16,8 @@ import {
   Copy,
   Trash2,
   Check,
+  Code2,
+  Download,
 } from "lucide-react";
 import { useEditor } from "../../context/EditorContext";
 import { Slider } from "../ui/Slider";
@@ -43,6 +45,8 @@ export function MobileEditor() {
     updateConfig,
     updateNestedConfig,
     applyPresetConfig,
+    setIsExportOpen,
+    setIsCodeOpen,
   } = useEditor();
 
   const [activeTab, setActiveTab] = useState<TabKey>("text");
@@ -64,7 +68,7 @@ export function MobileEditor() {
   return (
     <div className="flex flex-col h-full w-full bg-white dark:bg-studio-900 select-none overflow-hidden">
       {/* Scrollable Tab Bar at the top */}
-      <div className="flex items-center gap-1 p-1.5 border-b border-studio-200 dark:border-studio-800 bg-studio-50/80 dark:bg-studio-950/80 overflow-x-auto no-scrollbar shrink-0">
+      <div className="flex items-center gap-1.5 p-1.5 sm:p-2 border-b border-studio-200 dark:border-studio-800 bg-studio-50/90 dark:bg-studio-950/90 overflow-x-auto scrollbar-none shrink-0">
         {tabs.map(({ key, label, icon: Icon }) => {
           const isActive = activeTab === key;
           return (
@@ -799,6 +803,26 @@ export function MobileEditor() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Persistent Mobile Bottom Action Bar */}
+      <div className="p-2.5 sm:p-3 border-t border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-900/95 backdrop-blur flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          onClick={() => setIsCodeOpen(true)}
+          className="flex-1 py-2 sm:py-2.5 px-3 rounded-xl border border-studio-200 dark:border-studio-700 bg-studio-100 dark:bg-studio-800 text-studio-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-studio-200 dark:hover:bg-studio-750 active:scale-98 transition-all"
+        >
+          <Code2 className="w-3.5 h-3.5 text-forge-500" />
+          <span>Get Code</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setIsExportOpen(true)}
+          className="flex-[1.4] py-2 sm:py-2.5 px-3 rounded-xl bg-forge-500 hover:bg-forge-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-forge-500/20 active:scale-98 transition-all"
+        >
+          <Download className="w-3.5 h-3.5" />
+          <span>Export Media</span>
+        </button>
       </div>
     </div>
   );

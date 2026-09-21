@@ -1,10 +1,20 @@
 "use client";
 
 import React, { useRef, useMemo, useEffect, useState } from "react";
+import { Play, Pause, RotateCcw, Sparkles } from "lucide-react";
 import { useEditor } from "../../context/EditorContext";
 
 export function PreviewCanvas() {
-  const { config, isPlaying, animationKey, zoom, deviceMode } = useEditor();
+  const {
+    config,
+    isPlaying,
+    togglePlay,
+    restartAnimation,
+    randomize,
+    animationKey,
+    zoom,
+    deviceMode,
+  } = useEditor();
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 800, height: 500 });
 
@@ -58,7 +68,7 @@ export function PreviewCanvas() {
   // Compute zoom scale
   const scale = useMemo(() => {
     if (zoom !== "fit") return zoom;
-    const padding = 60;
+    const padding = containerSize.width < 640 ? 16 : 60;
     const availW = Math.max(100, containerSize.width - padding);
     const availH = Math.max(100, containerSize.height - padding);
     const scaleX = availW / deviceWidth;
@@ -252,6 +262,39 @@ export function PreviewCanvas() {
           <span className="text-studio-400">•</span>
           <span>{Math.round(scale * 100)}%</span>
         </div>
+      </div>
+
+      {/* Mobile Floating Transport Controls (< md) */}
+      <div className="md:hidden absolute bottom-2.5 right-3 flex items-center gap-1.5 z-20 pointer-events-auto">
+        <button
+          type="button"
+          onClick={togglePlay}
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white/90 dark:bg-studio-900/90 backdrop-blur border border-studio-200 dark:border-studio-700 shadow-md text-studio-800 dark:text-studio-100 text-xs font-bold active:scale-95 transition-transform"
+          title={isPlaying ? "Pause Animation" : "Play Animation"}
+        >
+          {isPlaying ? (
+            <Pause className="w-3.5 h-3.5 text-forge-500 fill-current" />
+          ) : (
+            <Play className="w-3.5 h-3.5 text-forge-500 fill-current" />
+          )}
+          <span>{isPlaying ? "Pause" : "Play"}</span>
+        </button>
+        <button
+          type="button"
+          onClick={restartAnimation}
+          className="p-1.5 rounded-lg bg-white/90 dark:bg-studio-900/90 backdrop-blur border border-studio-200 dark:border-studio-700 shadow-md text-studio-600 dark:text-studio-300 active:scale-95 transition-transform"
+          title="Restart Animation"
+        >
+          <RotateCcw className="w-3.5 h-3.5" />
+        </button>
+        <button
+          type="button"
+          onClick={randomize}
+          className="p-1.5 rounded-lg bg-white/90 dark:bg-studio-900/90 backdrop-blur border border-studio-200 dark:border-studio-700 shadow-md text-forge-500 active:scale-95 transition-transform"
+          title="Randomize Style"
+        >
+          <Sparkles className="w-3.5 h-3.5" />
+        </button>
       </div>
 
       {/* Scaled Canvas Container */}

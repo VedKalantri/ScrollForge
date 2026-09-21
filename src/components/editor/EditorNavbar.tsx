@@ -338,80 +338,86 @@ export function EditorNavbar() {
 
           {/* Dropdown / Popover for Mobile More Tools */}
           {showMoreMenu && (
-            <div className="absolute right-0 top-full mt-2 w-56 p-2 bg-white dark:bg-studio-900 border border-studio-200 dark:border-studio-750 rounded-xl shadow-2xl z-50 flex flex-col gap-1 text-xs animate-in fade-in zoom-in-95 duration-150">
-              <button
-                onClick={() => {
-                  randomize();
-                  setShowMoreMenu(false);
-                }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
-              >
-                <Sparkles className="w-4 h-4 text-forge-500" />
-                <span>Randomize Style</span>
-              </button>
-
-              <Link
-                href="/presets"
+            <>
+              <div
+                className="fixed inset-0 z-40"
                 onClick={() => setShowMoreMenu(false)}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
-              >
-                <Layers className="w-4 h-4 text-forge-500" />
-                <span>Presets Gallery</span>
-              </Link>
+              />
+              <div className="absolute right-0 top-full mt-2 w-56 p-2 bg-white dark:bg-studio-900 border border-studio-200 dark:border-studio-750 rounded-xl shadow-2xl z-50 flex flex-col gap-1 text-xs animate-in fade-in zoom-in-95 duration-150">
+                <button
+                  onClick={() => {
+                    randomize();
+                    setShowMoreMenu(false);
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+                >
+                  <Sparkles className="w-4 h-4 text-forge-500" />
+                  <span>Randomize Style</span>
+                </button>
 
-              <button
-                onClick={() => {
-                  setIsProjectsOpen(true);
-                  setShowMoreMenu(false);
-                }}
-                className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
-              >
-                <div className="flex items-center gap-2.5">
-                  <FolderOpen className="w-4 h-4 text-forge-500" />
-                  <span>Saved Projects</span>
-                </div>
-                {savedProjects.length > 0 && (
-                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-forge-500/10 text-forge-600 dark:text-forge-400 font-bold">
-                    {savedProjects.length}
-                  </span>
-                )}
-              </button>
+                <Link
+                  href="/presets"
+                  onClick={() => setShowMoreMenu(false)}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+                >
+                  <Layers className="w-4 h-4 text-forge-500" />
+                  <span>Presets Gallery</span>
+                </Link>
 
-              <button
-                onClick={() => {
-                  setIsCodeOpen(true);
-                  setShowMoreMenu(false);
-                }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
-              >
-                <Code2 className="w-4 h-4 text-forge-500" />
-                <span>Export Code (HTML/CSS)</span>
-              </button>
+                <button
+                  onClick={() => {
+                    setIsProjectsOpen(true);
+                    setShowMoreMenu(false);
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <FolderOpen className="w-4 h-4 text-forge-500" />
+                    <span>Saved Projects</span>
+                  </div>
+                  {savedProjects.length > 0 && (
+                    <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-forge-500/10 text-forge-600 dark:text-forge-400 font-bold">
+                      {savedProjects.length}
+                    </span>
+                  )}
+                </button>
 
-              <button
-                onClick={() => {
-                  handleShare();
-                  setShowMoreMenu(false);
-                }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
-              >
-                <Share2 className="w-4 h-4 text-forge-500" />
-                <span>{copiedShare ? "Link Copied!" : "Share Configuration"}</span>
-              </button>
+                <button
+                  onClick={() => {
+                    setIsCodeOpen(true);
+                    setShowMoreMenu(false);
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+                >
+                  <Code2 className="w-4 h-4 text-forge-500" />
+                  <span>Export Code (HTML/CSS)</span>
+                </button>
 
-              <div className="h-[1px] bg-studio-200 dark:bg-studio-800 my-1" />
+                <button
+                  onClick={() => {
+                    handleShare();
+                    setShowMoreMenu(false);
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+                >
+                  <Share2 className="w-4 h-4 text-forge-500" />
+                  <span>{copiedShare ? "Link Copied!" : "Share Configuration"}</span>
+                </button>
 
-              <button
-                onClick={() => {
-                  setIsHelpOpen(true);
-                  setShowMoreMenu(false);
-                }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
-              >
-                <HelpCircle className="w-4 h-4 text-forge-500" />
-                <span>Keyboard Shortcuts & Help</span>
-              </button>
-            </div>
+                <div className="h-[1px] bg-studio-200 dark:bg-studio-800 my-1" />
+
+                <button
+                  onClick={() => {
+                    setIsHelpOpen(true);
+                    setShowMoreMenu(false);
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+                >
+                  <HelpCircle className="w-4 h-4 text-forge-500" />
+                  <span>Keyboard Shortcuts & Help</span>
+                </button>
+              </div>
+            </>
           )}
         </div>
 
