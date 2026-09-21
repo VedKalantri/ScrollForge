@@ -26,6 +26,7 @@ import {
 import { useEditor } from "../../context/EditorContext";
 import { ZoomLevel, DeviceMode } from "../../types/scroll";
 import { Logo } from "../common/Logo";
+import { ThemeToggle } from "../common/ThemeToggle";
 
 export function EditorNavbar() {
   const {
@@ -302,18 +303,7 @@ export function EditorNavbar() {
         </button>
 
         {/* UI Theme Toggle */}
-        <button
-          onClick={toggleUiTheme}
-          className="p-1.5 text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 rounded-lg transition-colors"
-          title={`Switch to ${uiTheme === "dark" ? "Light" : "Dark"} Mode`}
-          aria-label="Toggle Theme"
-        >
-          {uiTheme === "dark" ? (
-            <Sun className="w-4 h-4" />
-          ) : (
-            <Moon className="w-4 h-4" />
-          )}
-        </button>
+        <ThemeToggle className="w-8 h-8 p-1.5 rounded-lg" />
 
         {/* Help */}
         <button

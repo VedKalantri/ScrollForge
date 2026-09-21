@@ -26,7 +26,7 @@ export function Slider({
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
       <div className="flex items-center justify-between text-xs">
-        <span className="font-medium text-studio-400 dark:text-studio-300">{label}</span>
+        <span className="font-medium text-studio-700 dark:text-studio-300">{label}</span>
         <div className="flex items-center gap-1">
           <input
             type="number"

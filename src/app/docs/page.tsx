@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BookOpen, Code2, Film, Layers, Move, Type, Wand2 } from "lucide-react";
+import { ThemeToggle } from "../../components/common/ThemeToggle";
 
 export default function DocsPage() {
   return (
@@ -24,13 +25,16 @@ export default function DocsPage() {
           </h1>
         </div>
 
-        <Link
-          href="/generator"
-          className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02]"
-        >
-          <span>Open Studio</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link
+            href="/generator"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02]"
+          >
+            <span>Open Studio</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </header>
 
       {/* Main Documentation Body */}
@@ -38,9 +42,12 @@ export default function DocsPage() {
         <div className="flex flex-col gap-12">
           {/* Section 1: Overview & Fundamentals */}
           <section className="flex flex-col gap-4">
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
-              Getting Started with ScrollForge
-            </h2>
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-studio-950 dark:text-white mb-3">
+                Getting Started with ScrollForge
+              </h2>
+              <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full mb-6" />
+            </div>
             <p className="text-sm text-studio-600 dark:text-studio-400 leading-relaxed">
               ScrollForge is a real-time motion typography workstation designed to eliminate the friction of building animated scrolling text. The core paradigm is instant visual feedback: as you type or adjust motion controls, changes are immediately reflected in the live preview canvas without page reloads or debounces.
             </p>

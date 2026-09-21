@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Layers, Sparkles } from "lucide-react";
 import { PRESETS } from "../../constants/presets";
 import { useEditor } from "../../context/EditorContext";
+import { ThemeToggle } from "../../components/common/ThemeToggle";
 
 type Category = "All" | "Essential" | "Bold & Neon" | "Broadcast & Retro" | "Display & Tech";
 
@@ -42,20 +43,24 @@ export default function PresetsPage() {
           </h1>
         </div>
 
-        <Link
-          href="/generator"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-forge-500 hover:bg-forge-600 text-white shadow transition-transform hover:scale-[1.02]"
-        >
-          <span>Open Studio</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link
+            href="/generator"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-forge-500 hover:bg-forge-600 text-white shadow transition-transform hover:scale-[1.02]"
+          >
+            <span>Open Studio</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </header>
 
       {/* Hero Header */}
       <div className="pt-12 pb-8 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-5">
+        <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-3">
           Curated Motion Presets
         </h2>
+        <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full mx-auto mb-6" />
         <p className="text-sm text-studio-500 dark:text-studio-400 max-w-lg mx-auto mb-8">
           Explore ready-to-use scrolling text configurations designed for high visual impact. Click any preset to load it instantly into the live editor.
         </p>

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { PRESETS } from "../constants/presets";
 import { Logo } from "../components/common/Logo";
+import { ThemeToggle } from "../components/common/ThemeToggle";
 
 export default function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -150,7 +151,8 @@ export default function LandingPage() {
         </nav>
 
         {/* Right CTA */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link
             href="/generator"
             className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow-md shadow-forge-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
@@ -164,12 +166,13 @@ export default function LandingPage() {
       {/* ===================== HERO SECTION ===================== */}
       <section className="relative pt-12 pb-20 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Dynamic Typography Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-5xl leading-[1.06] mb-6">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-5xl leading-[1.06] mb-4">
           Scrolling Text, <br className="hidden sm:inline" />
           <span className="underline decoration-forge-500/50 decoration-wavy decoration-2">
             Without the Hassle.
           </span>
         </h1>
+        <div className="h-1.5 w-24 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full mx-auto mb-6" />
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg text-studio-600 dark:text-studio-400 max-w-2xl font-normal leading-relaxed mb-8">
@@ -333,11 +336,12 @@ export default function LandingPage() {
       {/* ===================== EVERYTHING YOU CONTROL ===================== */}
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-studio-200 dark:border-studio-800 gap-6">
             <div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mb-3">
                 Everything You Control
               </h2>
+              <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full" />
             </div>
             <p className="text-sm text-studio-500 dark:text-studio-400 max-w-md font-normal leading-relaxed">
               Engineered with zero artificial debounce. Every keystroke, velocity change, and angle tilt immediately recalculates the live animation.
@@ -411,11 +415,12 @@ export default function LandingPage() {
       {/* ===================== CLIENT-SIDE EXPORT DELIVERABLES ===================== */}
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-12 border-b border-studio-200 dark:border-studio-800 gap-6">
             <div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mb-3">
                 Export Anywhere
               </h2>
+              <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full" />
             </div>
             <p className="text-sm text-studio-500 dark:text-studio-400 max-w-md font-normal leading-relaxed">
               No server queues, no cloud processing delay, and no watermarks. Your exports are rendered directly in browser memory.
@@ -486,11 +491,12 @@ export default function LandingPage() {
       {/* ===================== PRESETS GALLERY PREVIEW ===================== */}
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
+          <div className="flex items-end justify-between pb-8 mb-12 border-b border-studio-200 dark:border-studio-800 flex-wrap gap-4">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mb-3">
                 Preset Showcase
               </h2>
+              <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full" />
             </div>
             <Link
               href="/presets"
@@ -563,10 +569,11 @@ export default function LandingPage() {
       {/* ===================== FAQ SECTION ===================== */}
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col items-center text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mb-6">
+          <div className="flex flex-col items-center text-center pb-8 mb-12 border-b border-studio-200 dark:border-studio-800">
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mb-3">
               Frequently Asked Questions
             </h2>
+            <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full" />
           </div>
 
           <div className="flex flex-col divide-y divide-studio-200 dark:divide-studio-800">

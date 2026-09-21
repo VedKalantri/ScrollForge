@@ -33,7 +33,7 @@ export function ColorPicker({
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
       <div className="flex items-center justify-between text-xs">
-        <span className="font-medium text-studio-400 dark:text-studio-300">{label}</span>
+        <span className="font-medium text-studio-700 dark:text-studio-300">{label}</span>
         <div className="flex items-center gap-1.5">
           <label className="relative flex items-center justify-center w-6 h-6 rounded cursor-pointer border border-studio-200 dark:border-studio-700 shadow-sm overflow-hidden">
             <span

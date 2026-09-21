@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ShieldCheck, Sparkles, Cpu, Palette } from "lucide-react";
+import { ThemeToggle } from "../../components/common/ThemeToggle";
 
 export default function AboutPage() {
   return (
@@ -21,13 +22,16 @@ export default function AboutPage() {
           <h1 className="text-base font-extrabold mb-0">About ScrollForge</h1>
         </div>
 
-        <Link
-          href="/generator"
-          className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02]"
-        >
-          <span>Open Studio</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link
+            href="/generator"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02]"
+          >
+            <span>Open Studio</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </header>
 
       {/* Hero */}
@@ -37,9 +41,10 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-studio-200 dark:border-studio-800 bg-studio-100 dark:bg-studio-900 text-studio-700 dark:text-studio-300 text-xs font-medium mb-4">
               <span>Philosophy &amp; Architecture</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-3">
               Motion Typography, Reimagined as a Creative Tool.
             </h2>
+            <div className="h-1.5 w-20 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full mb-6" />
             <p className="text-base text-studio-600 dark:text-studio-400 leading-relaxed max-w-2xl">
               ScrollForge is purpose-built as a creative workstation for motion typography. We rejected generic dashboard patterns and AI-slop design to deliver a focused, high-contrast tool for creators, developers, and broadcast designers.
             </p>
