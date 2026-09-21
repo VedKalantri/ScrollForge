@@ -15,11 +15,9 @@ import {
   ChevronDown,
   Sliders,
   Palette,
-  Terminal,
-  Play,
-  RotateCcw,
 } from "lucide-react";
 import { PRESETS } from "../constants/presets";
+import { Logo } from "../components/common/Logo";
 
 export default function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -41,7 +39,7 @@ export default function LandingPage() {
           textColor: "#22d3ee",
           glow: "0 0 20px #06b6d4, 0 0 40px #06b6d4",
           font: "font-sans",
-          tag: "CYAN NEON // 130PX/S",
+          tag: "CYAN NEON",
         };
       case "news":
         return {
@@ -49,7 +47,7 @@ export default function LandingPage() {
           textColor: "#ffffff",
           glow: "0 2px 8px rgba(0,0,0,0.6)",
           font: "font-sans",
-          tag: "BREAKING NEWS // 260PX/S",
+          tag: "BREAKING NEWS",
         };
       case "cyber":
         return {
@@ -57,7 +55,7 @@ export default function LandingPage() {
           textColor: "#facc15",
           glow: "0 0 16px #eab308",
           font: "font-mono",
-          tag: "CYBERPUNK GLITCH // 180PX/S",
+          tag: "CYBERPUNK GLITCH",
         };
       case "crt":
         return {
@@ -65,7 +63,7 @@ export default function LandingPage() {
           textColor: "#4ade80",
           glow: "0 0 18px #22c55e",
           font: "font-mono",
-          tag: "PHOSPHOR CRT // 120PX/S",
+          tag: "PHOSPHOR CRT",
         };
       default:
         return {
@@ -73,7 +71,7 @@ export default function LandingPage() {
           textColor: "#ffffff",
           glow: "0 0 16px rgba(255,255,255,0.7)",
           font: "font-sans",
-          tag: "STUDIO DEFAULT // 150PX/S",
+          tag: "STUDIO DEFAULT",
         };
     }
   };
@@ -117,20 +115,10 @@ export default function LandingPage() {
 
   return (
     <div className="page-transition min-h-screen flex flex-col bg-white dark:bg-studio-950 text-studio-900 dark:text-studio-100 selection:bg-forge-500 selection:text-white">
-      {/* ===================== SPACIOUS STUDIO NAVBAR ===================== */}
+      {/* ===================== SPACIOUS CLEAN NAVBAR ===================== */}
       <header className="sticky top-0 z-40 h-20 border-b border-studio-200 dark:border-studio-800/80 bg-white/95 dark:bg-studio-950/95 backdrop-blur-md px-6 sm:px-12 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-forge-500 flex items-center justify-center text-white font-black text-base tracking-tighter shadow-md group-hover:bg-forge-600 transition-colors">
-            SF
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-lg tracking-tight leading-none text-studio-950 dark:text-white">
-              ScrollForge
-            </span>
-            <span className="text-[11px] font-mono text-studio-400 dark:text-studio-500 mt-0.5">
-              Motion Typography Studio
-            </span>
-          </div>
+          <Logo size={36} showWordmark={true} />
         </Link>
 
         {/* Center Navigation Links with generous spacing */}
@@ -161,13 +149,8 @@ export default function LandingPage() {
           </Link>
         </nav>
 
-        {/* Right Header Status & CTA */}
+        {/* Right CTA */}
         <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-studio-200 dark:border-studio-800 bg-studio-50 dark:bg-studio-900 text-studio-500 text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>v1.0 • Client-side</span>
-          </div>
-
           <Link
             href="/generator"
             className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow-md shadow-forge-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
@@ -180,15 +163,6 @@ export default function LandingPage() {
 
       {/* ===================== HERO SECTION ===================== */}
       <section className="relative pt-12 pb-20 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
-        {/* Editorial Eyebrow */}
-        <div className="flex items-center gap-3 text-xs font-mono tracking-wider text-forge-500 uppercase font-bold mb-4">
-          <span>[ MOTION WORKSTATION ]</span>
-          <span className="text-studio-300 dark:text-studio-700">•</span>
-          <span>ZERO DEBOUNCE</span>
-          <span className="text-studio-300 dark:text-studio-700">•</span>
-          <span>CLIENT-SIDE EXPORT</span>
-        </div>
-
         {/* Dynamic Typography Headline */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-5xl leading-[1.06] mb-6">
           Scrolling Text, <br className="hidden sm:inline" />
@@ -356,20 +330,17 @@ export default function LandingPage() {
         `}</style>
       </section>
 
-      {/* ===================== TECHNICAL WORKSTATION CAPABILITIES ===================== */}
+      {/* ===================== EVERYTHING YOU CONTROL ===================== */}
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
-                01 // ENGINE ARCHITECTURE
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white">
                 Everything You Control
               </h2>
             </div>
             <p className="text-sm text-studio-500 dark:text-studio-400 max-w-md font-normal leading-relaxed">
-              Engineered with zero artificial debounce. Every keystroke, velocity change, and angle tilt immediately recalculates CSS transform matrices.
+              Engineered with zero artificial debounce. Every keystroke, velocity change, and angle tilt immediately recalculates the live animation.
             </p>
           </div>
 
@@ -377,65 +348,52 @@ export default function LandingPage() {
             {[
               {
                 icon: Move,
-                code: "VECTOR.DIR",
                 title: "Direction & 360° Vectors",
                 desc: "Horizontal left/right marquee, vertical credits roll, diagonal angles, or custom 0°–360° vector headings.",
               },
               {
                 icon: Sliders,
-                code: "VELOCITY.PX",
                 title: "Linear Velocity Control",
                 desc: "Variable velocity from 20px/s relaxed editorial reading to 600px/s high-velocity broadcast tickers.",
               },
               {
                 icon: Type,
-                code: "TYPE.CATALOG",
                 title: "Display Typography",
                 desc: "Google Fonts catalog including Inter, Anton, Bebas Neue, Oswald, JetBrains Mono, Space Grotesk, and Poppins.",
               },
               {
                 icon: Palette,
-                code: "COLOR.RGBA",
                 title: "Gradients & Multi-Stops",
                 desc: "Multi-stop linear text fills, background colors, custom gradient angles, and alpha channel opacity.",
               },
               {
                 icon: Wand2,
-                code: "EFFECTS.FX",
                 title: "Real-Time Visual Effects",
                 desc: "Luminous neon glow, outline strokes, drop shadows, retro CRT scanlines, LED matrix, and RGB split.",
               },
               {
                 icon: Layers,
-                code: "BG.PATTERNS",
                 title: "Geometric Patterns",
                 desc: "Precision dot matrix grids, technical blueprints, diagonal stripes, and 1-bit alpha transparency.",
               },
               {
                 icon: Sparkles,
-                code: "LOOP.SEAMLESS",
                 title: "Gapless Looping",
                 desc: "Dual-track seamless infinite wrapping, ping-pong bounce oscillation, and pause-on-hover triggers.",
               },
               {
                 icon: Code2,
-                code: "EXPORT.CODE",
                 title: "Pure Code Generation",
                 desc: "Production-ready HTML, pure CSS keyframes, React TSX components, and standalone single-file downloads.",
               },
-            ].map(({ icon: Icon, code, title, desc }) => (
+            ].map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
                 className="p-6 rounded-2xl border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-900 flex flex-col justify-between shadow-sm hover:border-forge-500/60 transition-all group"
               >
                 <div className="flex flex-col gap-3">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-studio-100 dark:bg-studio-800 flex items-center justify-center text-forge-500 group-hover:scale-110 transition-transform">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-studio-400 bg-studio-100 dark:bg-studio-800 px-2 py-0.5 rounded">
-                      {code}
-                    </span>
+                  <div className="w-10 h-10 rounded-xl bg-studio-100 dark:bg-studio-800 flex items-center justify-center text-forge-500 group-hover:scale-110 transition-transform">
+                    <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-base font-bold text-studio-900 dark:text-studio-100 mt-2">
                     {title}
@@ -455,10 +413,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
-                02 // DELIVERABLES
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white">
                 Export Anywhere
               </h2>
             </div>
@@ -533,11 +488,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
-                03 // CURATED STYLES
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
-                Motion Preset Showcase
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white">
+                Preset Showcase
               </h2>
             </div>
             <Link
@@ -612,11 +564,8 @@ export default function LandingPage() {
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col items-center text-center mb-16">
-            <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
-              04 // FREQUENTLY ASKED QUESTIONS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
-              Common Questions
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white">
+              Frequently Asked Questions
             </h2>
           </div>
 
@@ -650,12 +599,7 @@ export default function LandingPage() {
       <footer className="border-t border-studio-200 dark:border-studio-800 bg-studio-50 dark:bg-studio-950 px-6 sm:px-12 py-12 text-xs text-studio-500 dark:text-studio-400">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg bg-forge-500 flex items-center justify-center text-white font-black text-xs">
-              SF
-            </div>
-            <span className="font-extrabold text-sm text-studio-900 dark:text-white">
-              ScrollForge
-            </span>
+            <Logo size={28} showWordmark={true} />
             <span className="text-studio-400">• Create. Customize. Scroll.</span>
           </div>
 

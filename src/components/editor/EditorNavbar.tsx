@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { useEditor } from "../../context/EditorContext";
 import { ZoomLevel, DeviceMode } from "../../types/scroll";
+import { Logo } from "../common/Logo";
 
 export function EditorNavbar() {
   const {
@@ -75,21 +76,8 @@ export function EditorNavbar() {
     <header className="h-14 border-b border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-900/95 backdrop-blur-md px-4 flex items-center justify-between z-30 select-none">
       {/* Brand & File Actions */}
       <div className="flex items-center gap-3">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-forge-500 flex items-center justify-center text-white font-black text-sm tracking-tighter shadow-sm group-hover:bg-forge-600 transition-colors">
-            SF
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-sm tracking-tight text-studio-900 dark:text-white flex items-center gap-1.5">
-              ScrollForge
-              <span className="text-[10px] px-1.5 py-0.2 rounded font-mono font-medium bg-studio-100 dark:bg-studio-800 text-studio-600 dark:text-studio-300">
-                PRO
-              </span>
-            </span>
-            <span className="text-[10px] font-mono text-studio-400 dark:text-studio-500 leading-none">
-              Motion Studio
-            </span>
-          </div>
+        <Link href="/" className="flex items-center gap-2 group">
+          <Logo size={32} showWordmark={true} />
         </Link>
 
         <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800 mx-1" />
