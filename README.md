@@ -3,7 +3,7 @@
 # ⚡ ScrollForge
 ### The Ultimate Real-Time Scrolling Text Generator & Motion Typography Studio
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-ScrollForge-f97316?style=for-the-badge&logo=vercel&logoColor=white)](https://github.com/VedKalantri/ScrollForge)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-scroll--forge--xi.vercel.app-f97316?style=for-the-badge&logo=vercel&logoColor=white)](https://scroll-forge-xi.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -11,11 +11,12 @@
 
 <br />
 
-> **ScrollForge is a real-time motion typography studio that lets you design customizable scrolling text and export it instantly as an animated GIF, video, or clean HTML/CSS code.**
+> **ScrollForge is a real-time motion typography studio that lets you design customizable scrolling text and export it instantly as an animated GIF, video, or clean HTML/CSS code.**  
+> 🌐 **Live Web Application:** [https://scroll-forge-xi.vercel.app](https://scroll-forge-xi.vercel.app/)
 
 <br />
 
-[**Launch Studio**](https://github.com/VedKalantri/ScrollForge) • [**Explore Presets**](https://github.com/VedKalantri/ScrollForge) • [**Documentation**](https://github.com/VedKalantri/ScrollForge) • [**Report Bug**](https://github.com/VedKalantri/ScrollForge/issues)
+[**Launch Studio**](https://scroll-forge-xi.vercel.app/generator) • [**Explore Presets**](https://scroll-forge-xi.vercel.app/presets) • [**Documentation**](https://scroll-forge-xi.vercel.app/docs) • [**GitHub Repository**](https://github.com/VedKalantri/ScrollForge)
 
 </div>
 
