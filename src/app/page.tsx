@@ -166,13 +166,12 @@ export default function LandingPage() {
       {/* ===================== HERO SECTION ===================== */}
       <section className="relative pt-12 pb-20 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Dynamic Typography Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-5xl leading-[1.06] mb-4">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-5xl leading-[1.06] mb-6">
           Scrolling Text, <br className="hidden sm:inline" />
           <span className="underline decoration-forge-500/50 decoration-wavy decoration-2">
             Without the Hassle.
           </span>
         </h1>
-        <div className="h-1.5 w-24 bg-gradient-to-r from-forge-500 to-amber-500 rounded-full mx-auto mb-6" />
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg text-studio-600 dark:text-studio-400 max-w-2xl font-normal leading-relaxed mb-8">
