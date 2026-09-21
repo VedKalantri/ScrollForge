@@ -335,7 +335,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
                 Everything You Control
               </h2>
             </div>
@@ -395,7 +395,7 @@ export default function LandingPage() {
                   <div className="w-10 h-10 rounded-xl bg-studio-100 dark:bg-studio-800 flex items-center justify-center text-forge-500 group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-studio-900 dark:text-studio-100 mt-2">
+                  <h3 className="text-base font-bold text-studio-900 dark:text-studio-100 mt-2 mb-2">
                     {title}
                   </h3>
                   <p className="text-xs text-studio-500 dark:text-studio-400 leading-relaxed">
@@ -413,7 +413,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
                 Export Anywhere
               </h2>
             </div>
@@ -429,7 +429,7 @@ export default function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-forge-500/10 text-forge-500 flex items-center justify-center">
                   <ImageIcon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-black text-studio-900 dark:text-studio-100">
+                <h3 className="text-xl font-black text-studio-900 dark:text-studio-100 mb-2">
                   Animated GIF
                 </h3>
                 <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -448,7 +448,7 @@ export default function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center">
                   <Film className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-black text-studio-900 dark:text-studio-100">
+                <h3 className="text-xl font-black text-studio-900 dark:text-studio-100 mb-2">
                   Crisp Video (WebM / MP4)
                 </h3>
                 <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -467,7 +467,7 @@ export default function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                   <Code2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-black text-studio-900 dark:text-studio-100">
+                <h3 className="text-xl font-black text-studio-900 dark:text-studio-100 mb-2">
                   Production Code
                 </h3>
                 <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -488,7 +488,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
                 Preset Showcase
               </h2>
             </div>
@@ -536,7 +536,7 @@ export default function LandingPage() {
                 {/* Details */}
                 <div className="p-5 flex flex-col gap-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
+                    <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 mb-0">
                       {preset.name}
                     </h3>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-studio-100 dark:bg-studio-800 text-studio-500 font-medium">
@@ -551,7 +551,7 @@ export default function LandingPage() {
                     className="mt-2 text-xs font-bold text-forge-500 hover:text-forge-600 flex items-center gap-1"
                   >
                     <span>Use in Studio</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
@@ -564,7 +564,7 @@ export default function LandingPage() {
       <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col items-center text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white">
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mb-6">
               Frequently Asked Questions
             </h2>
           </div>

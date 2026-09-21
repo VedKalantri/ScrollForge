@@ -36,7 +36,7 @@ export default function PresetsPage() {
             <span>Back to Home</span>
           </Link>
           <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800" />
-          <h1 className="text-base font-extrabold flex items-center gap-2">
+          <h1 className="text-base font-extrabold flex items-center gap-2 mb-0">
             <Layers className="w-4 h-4 text-forge-500" />
             Motion Presets
           </h1>
@@ -53,7 +53,7 @@ export default function PresetsPage() {
 
       {/* Hero Header */}
       <div className="pt-12 pb-8 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-3">
+        <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-5">
           Curated Motion Presets
         </h2>
         <p className="text-sm text-studio-500 dark:text-studio-400 max-w-lg mx-auto mb-8">
@@ -123,7 +123,7 @@ export default function PresetsPage() {
                 {/* Info & Action */}
                 <div className="p-5 flex flex-col gap-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 group-hover:text-forge-500 transition-colors">
+                    <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 group-hover:text-forge-500 transition-colors mb-0">
                       {preset.name}
                     </h3>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-studio-100 dark:bg-studio-800 text-studio-500">

@@ -18,7 +18,7 @@ export default function DocsPage() {
             <span>Back to Home</span>
           </Link>
           <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800" />
-          <h1 className="text-base font-extrabold flex items-center gap-2">
+          <h1 className="text-base font-extrabold flex items-center gap-2 mb-0">
             <BookOpen className="w-4 h-4 text-forge-500" />
             Documentation
           </h1>
@@ -38,7 +38,7 @@ export default function DocsPage() {
         <div className="flex flex-col gap-12">
           {/* Section 1: Overview & Fundamentals */}
           <section className="flex flex-col gap-4">
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-studio-950 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-studio-950 dark:text-white mb-4">
               Getting Started with ScrollForge
             </h2>
             <p className="text-sm text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -54,9 +54,9 @@ export default function DocsPage() {
 
           {/* Section 2: Directions & Angles */}
           <section className="flex flex-col gap-4 border-t border-studio-200 dark:border-studio-800 pt-8">
-            <div className="flex items-center gap-2 text-forge-500">
+            <div className="flex items-center gap-2 text-forge-500 mb-2">
               <Move className="w-5 h-5" />
-              <h3 className="text-lg font-bold text-studio-950 dark:text-white">
+              <h3 className="text-lg font-bold text-studio-950 dark:text-white mb-0">
                 Motion Vectors &amp; Velocity
               </h3>
             </div>
@@ -73,9 +73,9 @@ export default function DocsPage() {
 
           {/* Section 3: Visual Effects */}
           <section className="flex flex-col gap-4 border-t border-studio-200 dark:border-studio-800 pt-8">
-            <div className="flex items-center gap-2 text-forge-500">
+            <div className="flex items-center gap-2 text-forge-500 mb-2">
               <Wand2 className="w-5 h-5" />
-              <h3 className="text-lg font-bold text-studio-950 dark:text-white">
+              <h3 className="text-lg font-bold text-studio-950 dark:text-white mb-0">
                 Text Effects Engine
               </h3>
             </div>
@@ -104,9 +104,9 @@ export default function DocsPage() {
 
           {/* Section 4: Export Engine */}
           <section className="flex flex-col gap-4 border-t border-studio-200 dark:border-studio-800 pt-8">
-            <div className="flex items-center gap-2 text-forge-500">
+            <div className="flex items-center gap-2 text-forge-500 mb-2">
               <Film className="w-5 h-5" />
-              <h3 className="text-lg font-bold text-studio-950 dark:text-white">
+              <h3 className="text-lg font-bold text-studio-950 dark:text-white mb-0">
                 Export Pipelines &amp; Transparency
               </h3>
             </div>

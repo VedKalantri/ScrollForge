@@ -18,7 +18,7 @@ export default function AboutPage() {
             <span>Back to Home</span>
           </Link>
           <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800" />
-          <h1 className="text-base font-extrabold">About ScrollForge</h1>
+          <h1 className="text-base font-extrabold mb-0">About ScrollForge</h1>
         </div>
 
         <Link
@@ -37,7 +37,7 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-studio-200 dark:border-studio-800 bg-studio-100 dark:bg-studio-900 text-studio-700 dark:text-studio-300 text-xs font-medium mb-4">
               <span>Philosophy &amp; Architecture</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-6">
               Motion Typography, Reimagined as a Creative Tool.
             </h2>
             <p className="text-base text-studio-600 dark:text-studio-400 leading-relaxed max-w-2xl">
@@ -50,7 +50,7 @@ export default function AboutPage() {
               <div className="w-9 h-9 rounded-lg bg-forge-500/10 text-forge-500 flex items-center justify-center">
                 <Palette className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
+              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 mb-2">
                 Creative Studio Identity
               </h3>
               <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div className="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
+              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 mb-2">
                 100% Client-Side Privacy
               </h3>
               <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -74,7 +74,7 @@ export default function AboutPage() {
               <div className="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center">
                 <Cpu className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
+              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 mb-2">
                 Zero Debounce Real-Time Pipeline
               </h3>
               <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
@@ -86,7 +86,7 @@ export default function AboutPage() {
               <div className="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
+              <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100 mb-2">
                 Built with Modern Standards
               </h3>
               <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
