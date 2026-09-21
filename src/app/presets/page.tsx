@@ -24,21 +24,21 @@ export default function PresetsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-studio-950 text-studio-900 dark:text-studio-100 select-none">
+    <div className="page-transition min-h-screen flex flex-col bg-white dark:bg-studio-950 text-studio-900 dark:text-studio-100 select-none">
       {/* Top Navbar */}
-      <header className="h-16 border-b border-studio-200 dark:border-studio-800 bg-white/90 dark:bg-studio-950/90 backdrop-blur px-6 flex items-center justify-between">
+      <header className="h-20 border-b border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-950/95 backdrop-blur px-6 sm:px-12 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-xs font-semibold text-studio-600 dark:text-studio-400 hover:text-forge-500 transition-colors"
+            className="flex items-center gap-2 text-xs font-bold text-studio-600 dark:text-studio-400 hover:text-forge-500 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Home</span>
+            <span>Back to Home</span>
           </Link>
-          <div className="h-4 w-[1px] bg-studio-200 dark:bg-studio-800" />
-          <h1 className="text-sm font-bold flex items-center gap-2">
+          <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800" />
+          <h1 className="text-base font-extrabold flex items-center gap-2">
             <Layers className="w-4 h-4 text-forge-500" />
-            Preset Gallery
+            Motion Presets
           </h1>
         </div>
 

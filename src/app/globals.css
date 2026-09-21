@@ -9,14 +9,34 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
-  @apply bg-studio-50 text-studio-900 dark:bg-studio-950 dark:text-studio-100 font-sans antialiased;
+  @apply bg-white text-studio-900 dark:bg-studio-950 dark:text-studio-100 font-sans antialiased;
+}
+
+/* Smooth page entrance transition */
+@keyframes sfPageFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: sfPageFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Custom scrollbar for creative tool panels */

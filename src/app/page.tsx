@@ -13,19 +13,72 @@ import {
   Wand2,
   Type,
   ChevronDown,
-  CheckCircle2,
   Sliders,
   Palette,
-  ExternalLink,
+  Terminal,
+  Play,
+  RotateCcw,
 } from "lucide-react";
 import { PRESETS } from "../constants/presets";
 
 export default function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  // Interactive Live Hero Playground State
+  const [heroText, setHeroText] = useState("WELCOME TO SCROLLFORGE // CREATE. CUSTOMIZE. SCROLL.");
+  const [heroTheme, setHeroTheme] = useState<"default" | "neon" | "news" | "cyber" | "crt">("default");
+  const [heroSpeed, setHeroSpeed] = useState<number>(18); // seconds
+
   const toggleFaq = (idx: number) => {
     setActiveFaq((prev) => (prev === idx ? null : idx));
   };
+
+  const getThemeStyles = () => {
+    switch (heroTheme) {
+      case "neon":
+        return {
+          bg: "bg-[#050814]",
+          textColor: "#22d3ee",
+          glow: "0 0 20px #06b6d4, 0 0 40px #06b6d4",
+          font: "font-sans",
+          tag: "CYAN NEON // 130PX/S",
+        };
+      case "news":
+        return {
+          bg: "bg-[#dc2626]",
+          textColor: "#ffffff",
+          glow: "0 2px 8px rgba(0,0,0,0.6)",
+          font: "font-sans",
+          tag: "BREAKING NEWS // 260PX/S",
+        };
+      case "cyber":
+        return {
+          bg: "bg-[#090a0f]",
+          textColor: "#facc15",
+          glow: "0 0 16px #eab308",
+          font: "font-mono",
+          tag: "CYBERPUNK GLITCH // 180PX/S",
+        };
+      case "crt":
+        return {
+          bg: "bg-[#041208]",
+          textColor: "#4ade80",
+          glow: "0 0 18px #22c55e",
+          font: "font-mono",
+          tag: "PHOSPHOR CRT // 120PX/S",
+        };
+      default:
+        return {
+          bg: "bg-studio-950",
+          textColor: "#ffffff",
+          glow: "0 0 16px rgba(255,255,255,0.7)",
+          font: "font-sans",
+          tag: "STUDIO DEFAULT // 150PX/S",
+        };
+    }
+  };
+
+  const currentTheme = getThemeStyles();
 
   const faqs = [
     {
@@ -63,145 +116,260 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-studio-950 text-studio-900 dark:text-studio-100 selection:bg-forge-500 selection:text-white">
-      {/* ===================== NAVBAR ===================== */}
-      <header className="sticky top-0 z-40 h-16 border-b border-studio-200 dark:border-studio-800/80 bg-white/90 dark:bg-studio-950/90 backdrop-blur-md px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-forge-500 flex items-center justify-center text-white font-black text-sm tracking-tighter shadow-sm">
+    <div className="page-transition min-h-screen flex flex-col bg-white dark:bg-studio-950 text-studio-900 dark:text-studio-100 selection:bg-forge-500 selection:text-white">
+      {/* ===================== SPACIOUS STUDIO NAVBAR ===================== */}
+      <header className="sticky top-0 z-40 h-20 border-b border-studio-200 dark:border-studio-800/80 bg-white/95 dark:bg-studio-950/95 backdrop-blur-md px-6 sm:px-12 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-xl bg-forge-500 flex items-center justify-center text-white font-black text-base tracking-tighter shadow-md group-hover:bg-forge-600 transition-colors">
             SF
           </div>
-          <span className="font-extrabold text-base tracking-tight">
-            ScrollForge
-          </span>
+          <div className="flex flex-col">
+            <span className="font-extrabold text-lg tracking-tight leading-none text-studio-950 dark:text-white">
+              ScrollForge
+            </span>
+            <span className="text-[11px] font-mono text-studio-400 dark:text-studio-500 mt-0.5">
+              Motion Typography Studio
+            </span>
+          </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-studio-600 dark:text-studio-300">
-          <Link href="/generator" className="hover:text-forge-500 transition-colors">
+        {/* Center Navigation Links with generous spacing */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-studio-600 dark:text-studio-300">
+          <Link
+            href="/generator"
+            className="hover:text-forge-500 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-forge-500 hover:after:w-full after:transition-all"
+          >
             Studio
           </Link>
-          <Link href="/presets" className="hover:text-forge-500 transition-colors">
+          <Link
+            href="/presets"
+            className="hover:text-forge-500 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-forge-500 hover:after:w-full after:transition-all"
+          >
             Presets
           </Link>
-          <Link href="/docs" className="hover:text-forge-500 transition-colors">
+          <Link
+            href="/docs"
+            className="hover:text-forge-500 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-forge-500 hover:after:w-full after:transition-all"
+          >
             Documentation
           </Link>
-          <Link href="/about" className="hover:text-forge-500 transition-colors">
+          <Link
+            href="/about"
+            className="hover:text-forge-500 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-forge-500 hover:after:w-full after:transition-all"
+          >
             About
           </Link>
         </nav>
 
-        <div className="flex items-center gap-3">
+        {/* Right Header Status & CTA */}
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-studio-200 dark:border-studio-800 bg-studio-50 dark:bg-studio-900 text-studio-500 text-xs font-mono">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>v1.0 • Client-side</span>
+          </div>
+
           <Link
             href="/generator"
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02]"
+            className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow-md shadow-forge-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span>Launch Studio</span>
+            <span>Open Studio</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </header>
 
       {/* ===================== HERO SECTION ===================== */}
-      <section className="relative pt-16 pb-20 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-studio-200 dark:border-studio-800 bg-studio-100/80 dark:bg-studio-900/80 text-studio-700 dark:text-studio-300 text-xs font-medium mb-6">
-          <span className="w-2 h-2 rounded-full bg-forge-500" />
-          <span>The Ultimate Scrolling Text Generator</span>
+      <section className="relative pt-12 pb-20 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
+        {/* Editorial Eyebrow */}
+        <div className="flex items-center gap-3 text-xs font-mono tracking-wider text-forge-500 uppercase font-bold mb-4">
+          <span>[ MOTION WORKSTATION ]</span>
+          <span className="text-studio-300 dark:text-studio-700">•</span>
+          <span>ZERO DEBOUNCE</span>
+          <span className="text-studio-300 dark:text-studio-700">•</span>
+          <span>CLIENT-SIDE EXPORT</span>
         </div>
 
-        {/* Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-4xl leading-[1.08] mb-6">
-          Scrolling Text, Without the Hassle.
+        {/* Dynamic Typography Headline */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-studio-950 dark:text-white max-w-5xl leading-[1.06] mb-6">
+          Scrolling Text, <br className="hidden sm:inline" />
+          <span className="underline decoration-forge-500/50 decoration-wavy decoration-2">
+            Without the Hassle.
+          </span>
         </h1>
 
-        {/* Subheadline */}
-        <p className="text-base sm:text-lg text-studio-600 dark:text-studio-400 max-w-2xl font-normal leading-relaxed mb-10">
-          Create fully customizable horizontal, vertical and animated scrolling text. Export it as GIF, video or production-ready code.
+        {/* Subtitle */}
+        <p className="text-base sm:text-lg text-studio-600 dark:text-studio-400 max-w-2xl font-normal leading-relaxed mb-8">
+          Design fully customizable horizontal, vertical, and diagonal scrolling text. Export as animated GIF, high-definition video, or production-ready code in seconds.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+        {/* Direct Navigation CTAs */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
           <Link
             href="/generator"
-            className="flex items-center gap-2 px-6 py-3.5 text-sm font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow-lg shadow-forge-500/20 transition-all hover:scale-[1.02]"
+            className="flex items-center gap-2 px-7 py-3.5 text-sm font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow-lg shadow-forge-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span>Start Creating</span>
+            <span>Start Creating in Studio</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/presets"
-            className="flex items-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl border border-studio-300 dark:border-studio-700 bg-white dark:bg-studio-900 text-studio-800 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-850 transition-colors"
+            className="flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl border border-studio-300 dark:border-studio-700 bg-white dark:bg-studio-900 text-studio-800 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-850 transition-colors"
           >
-            <span>Explore Presets</span>
+            <Layers className="w-4 h-4 text-forge-500" />
+            <span>Explore 12+ Presets</span>
           </Link>
         </div>
 
-        {/* REAL ANIMATED MARQUEE SHOWCASE (No static image!) */}
-        <div className="w-full rounded-2xl border border-studio-300 dark:border-studio-800 bg-studio-950 shadow-2xl overflow-hidden relative group">
-          {/* Workstation Top Chrome */}
-          <div className="px-4 py-2.5 bg-studio-900 border-b border-studio-800 flex items-center justify-between text-xs font-mono text-studio-400">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-              <span className="ml-2 font-medium text-studio-300">ScrollForge Live Engine</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                60 FPS
+        {/* ===================== INTERACTIVE LIVE MARQUEE HERO ===================== */}
+        <div className="w-full rounded-2xl border border-studio-300 dark:border-studio-800 bg-studio-900 shadow-2xl overflow-hidden relative text-left">
+          {/* Workstation Header Bar */}
+          <div className="px-5 py-3 bg-studio-950 border-b border-studio-800 flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3 text-xs font-mono text-studio-400">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+              <span className="font-bold text-white uppercase tracking-wider">
+                Live Interactive Canvas
               </span>
-              <span className="hidden sm:inline">1920 × 400 PX</span>
+              <span className="hidden sm:inline text-studio-600">|</span>
+              <span className="hidden sm:inline font-mono text-studio-400">
+                {currentTheme.tag}
+              </span>
+            </div>
+
+            {/* Quick Live Style Switchers */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-[11px] font-mono text-studio-500 mr-1 hidden md:inline">
+                Quick Style:
+              </span>
+              {(
+                [
+                  { id: "default", label: "Studio" },
+                  { id: "neon", label: "⚡ Neon" },
+                  { id: "news", label: "🚨 Alert" },
+                  { id: "cyber", label: "👾 Cyber" },
+                  { id: "crt", label: "📺 CRT" },
+                ] as const
+              ).map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => setHeroTheme(t.id)}
+                  className={`px-2.5 py-1 text-xs font-mono font-semibold rounded transition-all ${
+                    heroTheme === t.id
+                      ? "bg-forge-500 text-white shadow-sm"
+                      : "bg-studio-800 text-studio-300 hover:bg-studio-750"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Actual Animated Scrolling Banner */}
-          <div className="py-12 px-4 bg-gradient-to-r from-studio-950 via-[#0a0c14] to-studio-950 overflow-hidden flex items-center">
-            <div className="sf-landing-marquee flex items-center whitespace-nowrap will-change-transform">
-              <span className="inline-block text-3xl sm:text-5xl md:text-6xl font-black tracking-widest text-white uppercase px-8">
-                ← WELCOME TO SCROLLFORGE ← CREATE. CUSTOMIZE. SCROLL. ← EXPORT AS GIF, VIDEO &amp; CODE ←
-              </span>
-              <span aria-hidden="true" className="inline-block text-3xl sm:text-5xl md:text-6xl font-black tracking-widest text-white uppercase px-8">
-                ← WELCOME TO SCROLLFORGE ← CREATE. CUSTOMIZE. SCROLL. ← EXPORT AS GIF, VIDEO &amp; CODE ←
-              </span>
-            </div>
-          </div>
-
-          {/* Overlay CTA inside preview */}
-          <div className="p-3 bg-studio-900/90 border-t border-studio-800 flex items-center justify-between text-xs font-mono">
-            <span className="text-studio-400">Continuous 150px/sec • Inter 700 • Subtle Glow</span>
-            <Link
-              href="/generator"
-              className="text-forge-400 hover:text-forge-300 font-bold flex items-center gap-1"
+          {/* Actual Animated Scrolling Banner (Reacts immediately to theme & input) */}
+          <div
+            className={`py-14 px-4 overflow-hidden flex items-center transition-colors duration-300 ${currentTheme.bg}`}
+          >
+            <div
+              className={`sf-hero-track flex items-center whitespace-nowrap will-change-transform ${currentTheme.font}`}
+              style={{
+                animationDuration: `${heroSpeed}s`,
+              }}
             >
-              Open in Studio →
-            </Link>
+              <span
+                className="inline-block text-3xl sm:text-5xl md:text-6xl font-black tracking-widest uppercase px-8 transition-all"
+                style={{
+                  color: currentTheme.textColor,
+                  textShadow: currentTheme.glow,
+                }}
+              >
+                {heroText || "START TYPING TO PREVIEW SCROLLFORGE"}
+              </span>
+              <span
+                aria-hidden="true"
+                className="inline-block text-3xl sm:text-5xl md:text-6xl font-black tracking-widest uppercase px-8 transition-all"
+                style={{
+                  color: currentTheme.textColor,
+                  textShadow: currentTheme.glow,
+                }}
+              >
+                {heroText || "START TYPING TO PREVIEW SCROLLFORGE"}
+              </span>
+            </div>
+          </div>
+
+          {/* Interactive Live Tweak Bar: Test right on landing page! */}
+          <div className="p-4 bg-studio-950 border-t border-studio-800 flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-3 flex-1 min-w-[280px]">
+              <span className="text-xs font-mono text-studio-400 font-bold shrink-0">
+                Type here to test:
+              </span>
+              <input
+                type="text"
+                value={heroText}
+                onChange={(e) => setHeroText(e.target.value)}
+                placeholder="Type anything to see it scroll live..."
+                className="w-full px-3 py-1.5 text-xs font-mono rounded-lg border border-studio-800 bg-studio-900 text-white placeholder:text-studio-500 focus:outline-none focus:border-forge-500"
+              />
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <div className="flex items-center gap-1 text-xs font-mono text-studio-400">
+                <span className="hidden sm:inline">Speed:</span>
+                {[
+                  { s: 26, label: "0.5x" },
+                  { s: 18, label: "1x" },
+                  { s: 10, label: "2x" },
+                ].map((sp) => (
+                  <button
+                    key={sp.label}
+                    type="button"
+                    onClick={() => setHeroSpeed(sp.s)}
+                    className={`px-2 py-0.5 rounded text-[11px] font-bold ${
+                      heroSpeed === sp.s
+                        ? "bg-forge-500 text-white"
+                        : "bg-studio-800 text-studio-400 hover:text-white"
+                    }`}
+                  >
+                    {sp.label}
+                  </button>
+                ))}
+              </div>
+
+              <Link
+                href="/generator"
+                className="px-3.5 py-1.5 text-xs font-bold font-mono rounded-lg bg-white text-studio-950 hover:bg-studio-200 transition-colors flex items-center gap-1"
+              >
+                <span>Open in Studio →</span>
+              </Link>
+            </div>
           </div>
         </div>
 
         <style>{`
-          @keyframes landingScroll {
+          @keyframes heroScroll {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
           }
-          .sf-landing-marquee {
-            animation: landingScroll 18s linear infinite;
+          .sf-hero-track {
+            animation: heroScroll linear infinite;
           }
         `}</style>
       </section>
 
-      {/* ===================== EVERYTHING YOU CONTROL ===================== */}
-      <section className="py-20 px-6 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col items-center text-center mb-16">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-forge-500 mb-2">
-              Deep Customization
-            </h2>
-            <p className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white">
-              Everything You Control
-            </p>
-            <p className="text-sm text-studio-500 dark:text-studio-400 max-w-xl mt-3">
-              Full control over every aspect of animated typography. Real-time changes with zero lag.
+      {/* ===================== TECHNICAL WORKSTATION CAPABILITIES ===================== */}
+      <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/20">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
+                01 // ENGINE ARCHITECTURE
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
+                Everything You Control
+              </h2>
+            </div>
+            <p className="text-sm text-studio-500 dark:text-studio-400 max-w-md font-normal leading-relaxed">
+              Engineered with zero artificial debounce. Every keystroke, velocity change, and angle tilt immediately recalculates CSS transform matrices.
             </p>
           </div>
 
@@ -209,91 +377,108 @@ export default function LandingPage() {
             {[
               {
                 icon: Move,
-                title: "Direction & Angles",
-                desc: "Left, right, vertical credits, diagonals, or custom 0°–360° vector headings.",
+                code: "VECTOR.DIR",
+                title: "Direction & 360° Vectors",
+                desc: "Horizontal left/right marquee, vertical credits roll, diagonal angles, or custom 0°–360° vector headings.",
               },
               {
                 icon: Sliders,
-                title: "Precise Velocity",
-                desc: "Variable velocity from relaxed 40px/s reading pace to 500px/s high-alert broadcast.",
+                code: "VELOCITY.PX",
+                title: "Linear Velocity Control",
+                desc: "Variable velocity from 20px/s relaxed editorial reading to 600px/s high-velocity broadcast tickers.",
               },
               {
                 icon: Type,
-                title: "Font Library",
-                desc: "Inter, Anton, Bebas Neue, Oswald, JetBrains Mono, Space Grotesk, and serif typefaces.",
+                code: "TYPE.CATALOG",
+                title: "Display Typography",
+                desc: "Google Fonts catalog including Inter, Anton, Bebas Neue, Oswald, JetBrains Mono, Space Grotesk, and Poppins.",
               },
               {
                 icon: Palette,
-                title: "Colors & Gradients",
-                desc: "Multi-stop linear text fills, background colors, custom angles, and opacity channels.",
+                code: "COLOR.RGBA",
+                title: "Gradients & Multi-Stops",
+                desc: "Multi-stop linear text fills, background colors, custom gradient angles, and alpha channel opacity.",
               },
               {
                 icon: Wand2,
-                title: "Visual Effects",
-                desc: "Neon glow, outline stroke, drop shadow, CRT scanlines, LED matrix, and RGB split.",
+                code: "EFFECTS.FX",
+                title: "Real-Time Visual Effects",
+                desc: "Luminous neon glow, outline strokes, drop shadows, retro CRT scanlines, LED matrix, and RGB split.",
               },
               {
                 icon: Layers,
-                title: "Pattern Backgrounds",
-                desc: "Geometric dot matrix, grid blueprints, diagonal stripes, and alpha transparency.",
+                code: "BG.PATTERNS",
+                title: "Geometric Patterns",
+                desc: "Precision dot matrix grids, technical blueprints, diagonal stripes, and 1-bit alpha transparency.",
               },
               {
                 icon: Sparkles,
-                title: "Seamless Looping",
-                desc: "Continuous gapless looping, ping-pong oscillation, and pause-on-hover triggers.",
+                code: "LOOP.SEAMLESS",
+                title: "Gapless Looping",
+                desc: "Dual-track seamless infinite wrapping, ping-pong bounce oscillation, and pause-on-hover triggers.",
               },
               {
                 icon: Code2,
-                title: "Instant Code Generation",
-                desc: "Production-ready HTML, pure CSS keyframes, React components, and standalone files.",
+                code: "EXPORT.CODE",
+                title: "Pure Code Generation",
+                desc: "Production-ready HTML, pure CSS keyframes, React TSX components, and standalone single-file downloads.",
               },
-            ].map(({ icon: Icon, title, desc }) => (
+            ].map(({ icon: Icon, code, title, desc }) => (
               <div
                 key={title}
-                className="p-6 rounded-xl border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-900 flex flex-col gap-3 shadow-sm hover:border-forge-500/50 transition-colors"
+                className="p-6 rounded-2xl border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-900 flex flex-col justify-between shadow-sm hover:border-forge-500/60 transition-all group"
               >
-                <div className="w-9 h-9 rounded-lg bg-studio-100 dark:bg-studio-800 flex items-center justify-center text-forge-500">
-                  <Icon className="w-5 h-5" />
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-xl bg-studio-100 dark:bg-studio-800 flex items-center justify-center text-forge-500 group-hover:scale-110 transition-transform">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold text-studio-400 bg-studio-100 dark:bg-studio-800 px-2 py-0.5 rounded">
+                      {code}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-studio-900 dark:text-studio-100 mt-2">
+                    {title}
+                  </h3>
+                  <p className="text-xs text-studio-500 dark:text-studio-400 leading-relaxed">
+                    {desc}
+                  </p>
                 </div>
-                <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
-                  {title}
-                </h3>
-                <p className="text-xs text-studio-500 dark:text-studio-400 leading-relaxed">
-                  {desc}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===================== EXPORT ANYWHERE ===================== */}
-      <section className="py-20 px-6 border-t border-studio-200 dark:border-studio-800/80">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col items-center text-center mb-16">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-forge-500 mb-2">
-              Zero-Friction Deliverables
-            </h2>
-            <p className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white">
-              Export Anywhere
-            </p>
-            <p className="text-sm text-studio-500 dark:text-studio-400 max-w-xl mt-3">
-              Generate native assets directly in your browser. No server queue or watermark.
+      {/* ===================== CLIENT-SIDE EXPORT DELIVERABLES ===================== */}
+      <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
+                02 // DELIVERABLES
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
+                Export Anywhere
+              </h2>
+            </div>
+            <p className="text-sm text-studio-500 dark:text-studio-400 max-w-md font-normal leading-relaxed">
+              No server queues, no cloud processing delay, and no watermarks. Your exports are rendered directly in browser memory.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* GIF */}
             <div className="p-8 rounded-2xl border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-900 flex flex-col justify-between shadow-sm">
               <div className="flex flex-col gap-4">
-                <div className="w-12 h-12 rounded-xl bg-orange-500/10 text-forge-500 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-forge-500/10 text-forge-500 flex items-center justify-center">
                   <ImageIcon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-black text-studio-900 dark:text-studio-100">
                   Animated GIF
                 </h3>
                 <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
-                  High-speed client-side frame rendering with customizable FPS (12–30) and 1-bit transparent palette support. Ideal for emails, banners, and GitHub readmes.
+                  Frame-by-frame client-side encoding powered by gifenc. Supports 12 to 30 FPS, custom durations, and true 1-bit alpha transparent background palettes.
                 </p>
               </div>
               <div className="pt-6 border-t border-studio-100 dark:border-studio-800 mt-6 flex items-center justify-between text-xs font-mono text-studio-400">
@@ -312,7 +497,7 @@ export default function LandingPage() {
                   Crisp Video (WebM / MP4)
                 </h3>
                 <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
-                  Native browser canvas recording supporting 60 FPS smooth video. Perfect for video editors, TikTok, Instagram Reels, YouTube Shorts, and stream overlays.
+                  Direct canvas stream capture via MediaRecorder up to 60 FPS. Ideal for video editors, OBS live streams, social media stories, and digital billboards.
                 </p>
               </div>
               <div className="pt-6 border-t border-studio-100 dark:border-studio-800 mt-6 flex items-center justify-between text-xs font-mono text-studio-400">
@@ -331,7 +516,7 @@ export default function LandingPage() {
                   Production Code
                 </h3>
                 <p className="text-xs text-studio-600 dark:text-studio-400 leading-relaxed">
-                  Production-grade HTML, pure CSS keyframes, React TSX components, and standalone downloadable HTML files. Zero external dependencies required.
+                  Clean semantic HTML, pure CSS keyframes, React TSX components, and one-click downloadable standalone HTML files with embedded fonts and styles.
                 </p>
               </div>
               <div className="pt-6 border-t border-studio-100 dark:border-studio-800 mt-6 flex items-center justify-between text-xs font-mono text-studio-400">
@@ -343,23 +528,23 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===================== PRESETS SHOWCASE ===================== */}
-      <section className="py-20 px-6 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/30">
-        <div className="max-w-6xl mx-auto">
+      {/* ===================== PRESETS GALLERY PREVIEW ===================== */}
+      <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80 bg-studio-50/50 dark:bg-studio-900/20">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-forge-500 mb-1">
-                Curated Styles
+              <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
+                03 // CURATED STYLES
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
+                Motion Preset Showcase
               </h2>
-              <p className="text-3xl font-black tracking-tight text-studio-950 dark:text-white">
-                Preset Showcase
-              </p>
             </div>
             <Link
               href="/presets"
-              className="flex items-center gap-1 text-xs font-bold text-forge-500 hover:text-forge-600"
+              className="flex items-center gap-1.5 text-xs font-bold text-forge-500 hover:text-forge-600 transition-colors"
             >
-              <span>View All 12 Presets</span>
+              <span>Explore All 12 Presets</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -368,7 +553,7 @@ export default function LandingPage() {
             {PRESETS.slice(0, 6).map((preset) => (
               <div
                 key={preset.id}
-                className="rounded-xl border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-900 overflow-hidden shadow-sm flex flex-col justify-between"
+                className="rounded-2xl border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-900 overflow-hidden shadow-sm flex flex-col justify-between hover:border-forge-500/50 transition-all"
               >
                 {/* Visual Preview */}
                 <div
@@ -402,18 +587,18 @@ export default function LandingPage() {
                     <h3 className="text-sm font-bold text-studio-900 dark:text-studio-100">
                       {preset.name}
                     </h3>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-studio-100 dark:bg-studio-800 text-studio-500">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-studio-100 dark:bg-studio-800 text-studio-500 font-medium">
                       {preset.category}
                     </span>
                   </div>
-                  <p className="text-xs text-studio-500 dark:text-studio-400">
+                  <p className="text-xs text-studio-500 dark:text-studio-400 line-clamp-2">
                     {preset.description}
                   </p>
                   <Link
                     href="/generator"
                     className="mt-2 text-xs font-bold text-forge-500 hover:text-forge-600 flex items-center gap-1"
                   >
-                    <span>Use Preset in Studio</span>
+                    <span>Use in Studio</span>
                     <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
@@ -424,15 +609,15 @@ export default function LandingPage() {
       </section>
 
       {/* ===================== FAQ SECTION ===================== */}
-      <section className="py-20 px-6 border-t border-studio-200 dark:border-studio-800/80">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col items-center text-center mb-12">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-forge-500 mb-2">
+      <section className="py-24 px-6 sm:px-12 border-t border-studio-200 dark:border-studio-800/80">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col items-center text-center mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-forge-500 font-bold">
+              04 // FREQUENTLY ASKED QUESTIONS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-studio-950 dark:text-white mt-1">
               Common Questions
             </h2>
-            <p className="text-3xl font-black tracking-tight text-studio-950 dark:text-white">
-              Frequently Asked Questions
-            </p>
           </div>
 
           <div className="flex flex-col divide-y divide-studio-200 dark:divide-studio-800">
@@ -445,7 +630,7 @@ export default function LandingPage() {
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-studio-400 transition-transform ${
+                    className={`w-4 h-4 text-studio-400 transition-transform duration-200 ${
                       activeFaq === idx ? "rotate-180 text-forge-500" : ""
                     }`}
                   />
@@ -462,29 +647,29 @@ export default function LandingPage() {
       </section>
 
       {/* ===================== FOOTER ===================== */}
-      <footer className="border-t border-studio-200 dark:border-studio-800 bg-studio-50 dark:bg-studio-950 px-6 py-12 text-xs text-studio-500 dark:text-studio-400">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded bg-forge-500 flex items-center justify-center text-white font-black text-xs">
+      <footer className="border-t border-studio-200 dark:border-studio-800 bg-studio-50 dark:bg-studio-950 px-6 sm:px-12 py-12 text-xs text-studio-500 dark:text-studio-400">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-lg bg-forge-500 flex items-center justify-center text-white font-black text-xs">
               SF
             </div>
-            <span className="font-extrabold text-studio-900 dark:text-white">
+            <span className="font-extrabold text-sm text-studio-900 dark:text-white">
               ScrollForge
             </span>
             <span className="text-studio-400">• Create. Customize. Scroll.</span>
           </div>
 
-          <div className="flex items-center gap-6 font-medium">
-            <Link href="/generator" className="hover:text-forge-500">
+          <div className="flex items-center gap-8 font-medium">
+            <Link href="/generator" className="hover:text-forge-500 transition-colors">
               Studio
             </Link>
-            <Link href="/presets" className="hover:text-forge-500">
+            <Link href="/presets" className="hover:text-forge-500 transition-colors">
               Presets
             </Link>
-            <Link href="/docs" className="hover:text-forge-500">
+            <Link href="/docs" className="hover:text-forge-500 transition-colors">
               Documentation
             </Link>
-            <Link href="/about" className="hover:text-forge-500">
+            <Link href="/about" className="hover:text-forge-500 transition-colors">
               About
             </Link>
           </div>
