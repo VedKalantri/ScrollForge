@@ -192,7 +192,7 @@ export function ExportModal() {
         {/* ==================== GIF CONTROLS ==================== */}
         {activeType === "gif" && (
           <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-medium text-studio-700 dark:text-studio-300">
                   Resolution Scale
@@ -268,7 +268,7 @@ export function ExportModal() {
         {/* ==================== VIDEO CONTROLS ==================== */}
         {activeType === "video" && (
           <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-medium text-studio-700 dark:text-studio-300">
                   Resolution Scale

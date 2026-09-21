@@ -22,6 +22,8 @@ import {
   FilePlus,
   HelpCircle,
   Layers,
+  MoreHorizontal,
+  X,
 } from "lucide-react";
 import { useEditor } from "../../context/EditorContext";
 import { ZoomLevel, DeviceMode } from "../../types/scroll";
@@ -55,6 +57,7 @@ export function EditorNavbar() {
 
   const [copiedShare, setCopiedShare] = useState(false);
   const [showConfirmNew, setShowConfirmNew] = useState(false);
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
 
   const handleShare = async () => {
     const url = getShareUrl();
@@ -74,24 +77,24 @@ export function EditorNavbar() {
   };
 
   return (
-    <header className="h-14 border-b border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-900/95 backdrop-blur-md px-4 flex items-center justify-between z-30 select-none">
+    <header className="h-14 border-b border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-900/95 backdrop-blur-md px-2.5 sm:px-4 flex items-center justify-between z-30 select-none">
       {/* Brand & File Actions */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-3">
         <Link href="/" className="flex items-center gap-2 group">
-          <Logo size={32} showWordmark={true} />
+          <Logo size={28} showWordmark={true} className="[&>span]:hidden sm:[&>span]:inline" />
         </Link>
 
-        <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800 mx-1" />
+        <div className="h-4 sm:h-5 w-[1px] bg-studio-200 dark:bg-studio-800 mx-0.5 sm:mx-1" />
 
         {/* New / Reset */}
         <div className="relative">
           <button
             onClick={() => setShowConfirmNew(true)}
-            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-md text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
+            className="flex items-center gap-1 px-2 py-1.5 sm:px-2.5 text-xs font-medium rounded-md text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
             title="Create New Project"
           >
             <FilePlus className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">New</span>
+            <span className="hidden md:inline">New</span>
           </button>
 
           {showConfirmNew && (
@@ -242,83 +245,180 @@ export function EditorNavbar() {
       </div>
 
       {/* Right Action Tools */}
-      <div className="flex items-center gap-2">
-        {/* Randomize */}
-        <button
-          onClick={randomize}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-studio-100 dark:bg-studio-800 hover:bg-studio-200 dark:hover:bg-studio-750 text-studio-700 dark:text-studio-200 transition-colors border border-studio-200 dark:border-studio-700"
-          title="Generate Random Visually Striking Combination"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-forge-500" />
-          <span className="hidden lg:inline">Randomize</span>
-        </button>
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        {/* Desktop-only action items */}
+        <div className="hidden lg:flex items-center gap-2">
+          {/* Randomize */}
+          <button
+            onClick={randomize}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-studio-100 dark:bg-studio-800 hover:bg-studio-200 dark:hover:bg-studio-750 text-studio-700 dark:text-studio-200 transition-colors border border-studio-200 dark:border-studio-700"
+            title="Generate Random Visually Striking Combination"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-forge-500" />
+            <span>Randomize</span>
+          </button>
 
-        {/* Presets Gallery Link */}
-        <Link
-          href="/presets"
-          className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
-          title="Browse Curated Presets"
-        >
-          <Layers className="w-3.5 h-3.5" />
-          <span>Presets</span>
-        </Link>
+          {/* Presets Gallery Link */}
+          <Link
+            href="/presets"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
+            title="Browse Curated Presets"
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Presets</span>
+          </Link>
 
-        {/* Saved Projects */}
-        <button
-          onClick={() => setIsProjectsOpen(true)}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
-          title="Saved Projects & Recent Creations"
-        >
-          <FolderOpen className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Projects</span>
-          {savedProjects.length > 0 && (
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-forge-500/10 text-forge-600 dark:text-forge-400 font-bold">
-              {savedProjects.length}
-            </span>
-          )}
-        </button>
+          {/* Saved Projects */}
+          <button
+            onClick={() => setIsProjectsOpen(true)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-lg text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
+            title="Saved Projects & Recent Creations"
+          >
+            <FolderOpen className="w-3.5 h-3.5" />
+            <span>Projects</span>
+            {savedProjects.length > 0 && (
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-forge-500/10 text-forge-600 dark:text-forge-400 font-bold">
+                {savedProjects.length}
+              </span>
+            )}
+          </button>
 
-        {/* Share Link */}
-        <button
-          onClick={handleShare}
-          className="p-1.5 text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 rounded-lg transition-colors"
-          title="Copy Shareable Link"
-          aria-label="Share Configuration"
-        >
-          {copiedShare ? (
-            <Check className="w-4 h-4 text-emerald-500" />
-          ) : (
-            <Share2 className="w-4 h-4" />
-          )}
-        </button>
+          {/* Share Link */}
+          <button
+            onClick={handleShare}
+            className="p-1.5 text-studio-600 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-800 rounded-lg transition-colors"
+            title="Copy Shareable Link"
+            aria-label="Share Configuration"
+          >
+            {copiedShare ? (
+              <Check className="w-4 h-4 text-emerald-500" />
+            ) : (
+              <Share2 className="w-4 h-4" />
+            )}
+          </button>
 
-        {/* Code Generator */}
-        <button
-          onClick={() => setIsCodeOpen(true)}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-studio-100 dark:bg-studio-800 hover:bg-studio-200 dark:hover:bg-studio-750 text-studio-800 dark:text-studio-200 border border-studio-200 dark:border-studio-700 transition-colors"
-          title="View & Download Production Code"
-        >
-          <Code2 className="w-3.5 h-3.5 text-forge-500" />
-          <span className="hidden md:inline">Code</span>
-        </button>
+          {/* Code Generator */}
+          <button
+            onClick={() => setIsCodeOpen(true)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-studio-100 dark:bg-studio-800 hover:bg-studio-200 dark:hover:bg-studio-750 text-studio-800 dark:text-studio-200 border border-studio-200 dark:border-studio-700 transition-colors"
+            title="View & Download Production Code"
+          >
+            <Code2 className="w-3.5 h-3.5 text-forge-500" />
+            <span>Code</span>
+          </button>
+
+          {/* Help */}
+          <button
+            onClick={() => setIsHelpOpen(true)}
+            className="p-1.5 text-studio-400 hover:text-studio-600 dark:hover:text-studio-200 rounded-lg hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
+            title="Keyboard Shortcuts & Help"
+            aria-label="Help"
+          >
+            <HelpCircle className="w-4 h-4" />
+          </button>
+        </div>
 
         {/* UI Theme Toggle */}
         <ThemeToggle className="w-8 h-8 p-1.5 rounded-lg" />
 
-        {/* Help */}
-        <button
-          onClick={() => setIsHelpOpen(true)}
-          className="p-1.5 text-studio-400 hover:text-studio-600 dark:hover:text-studio-200 rounded-lg hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors"
-          title="Keyboard Shortcuts & Help"
-          aria-label="Help"
-        >
-          <HelpCircle className="w-4 h-4" />
-        </button>
+        {/* Mobile More Actions Menu Toggle (visible on < lg) */}
+        <div className="lg:hidden relative">
+          <button
+            type="button"
+            onClick={() => setShowMoreMenu(!showMoreMenu)}
+            className="p-1.5 rounded-lg border border-studio-200 dark:border-studio-800 bg-white dark:bg-studio-800 text-studio-700 dark:text-studio-300 hover:bg-studio-100 dark:hover:bg-studio-750 transition-colors relative"
+            title="More Studio Tools"
+            aria-label="More Studio Tools"
+          >
+            <MoreHorizontal className="w-4 h-4" />
+            {savedProjects.length > 0 && (
+              <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-forge-500" />
+            )}
+          </button>
+
+          {/* Dropdown / Popover for Mobile More Tools */}
+          {showMoreMenu && (
+            <div className="absolute right-0 top-full mt-2 w-56 p-2 bg-white dark:bg-studio-900 border border-studio-200 dark:border-studio-750 rounded-xl shadow-2xl z-50 flex flex-col gap-1 text-xs animate-in fade-in zoom-in-95 duration-150">
+              <button
+                onClick={() => {
+                  randomize();
+                  setShowMoreMenu(false);
+                }}
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+              >
+                <Sparkles className="w-4 h-4 text-forge-500" />
+                <span>Randomize Style</span>
+              </button>
+
+              <Link
+                href="/presets"
+                onClick={() => setShowMoreMenu(false)}
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+              >
+                <Layers className="w-4 h-4 text-forge-500" />
+                <span>Presets Gallery</span>
+              </Link>
+
+              <button
+                onClick={() => {
+                  setIsProjectsOpen(true);
+                  setShowMoreMenu(false);
+                }}
+                className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+              >
+                <div className="flex items-center gap-2.5">
+                  <FolderOpen className="w-4 h-4 text-forge-500" />
+                  <span>Saved Projects</span>
+                </div>
+                {savedProjects.length > 0 && (
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-forge-500/10 text-forge-600 dark:text-forge-400 font-bold">
+                    {savedProjects.length}
+                  </span>
+                )}
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsCodeOpen(true);
+                  setShowMoreMenu(false);
+                }}
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+              >
+                <Code2 className="w-4 h-4 text-forge-500" />
+                <span>Export Code (HTML/CSS)</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  handleShare();
+                  setShowMoreMenu(false);
+                }}
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+              >
+                <Share2 className="w-4 h-4 text-forge-500" />
+                <span>{copiedShare ? "Link Copied!" : "Share Configuration"}</span>
+              </button>
+
+              <div className="h-[1px] bg-studio-200 dark:bg-studio-800 my-1" />
+
+              <button
+                onClick={() => {
+                  setIsHelpOpen(true);
+                  setShowMoreMenu(false);
+                }}
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-studio-700 dark:text-studio-200 hover:bg-studio-100 dark:hover:bg-studio-800 transition-colors text-left"
+              >
+                <HelpCircle className="w-4 h-4 text-forge-500" />
+                <span>Keyboard Shortcuts & Help</span>
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Main Export Action */}
         <button
           onClick={() => setIsExportOpen(true)}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-lg bg-forge-500 hover:bg-forge-600 text-white shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+          className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 text-xs font-bold rounded-lg bg-forge-500 hover:bg-forge-600 text-white shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
         >
           <Download className="w-3.5 h-3.5" />
           <span>Export</span>

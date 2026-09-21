@@ -19,6 +19,7 @@ import {
 import { PRESETS } from "../constants/presets";
 import { Logo } from "../components/common/Logo";
 import { ThemeToggle } from "../components/common/ThemeToggle";
+import { MobileNavDrawer } from "../components/common/MobileNavDrawer";
 
 export default function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -150,8 +151,8 @@ export default function LandingPage() {
           </Link>
         </nav>
 
-        {/* Right CTA */}
-        <div className="flex items-center gap-3">
+        {/* Right CTA (Desktop) */}
+        <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
           <Link
             href="/generator"
@@ -161,6 +162,9 @@ export default function LandingPage() {
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
+
+        {/* Mobile Nav Drawer (< md) */}
+        <MobileNavDrawer />
       </header>
 
       {/* ===================== HERO SECTION ===================== */}
@@ -274,8 +278,8 @@ export default function LandingPage() {
           </div>
 
           {/* Interactive Live Tweak Bar: Test right on landing page! */}
-          <div className="p-4 bg-studio-950 border-t border-studio-800 flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-3 flex-1 min-w-[280px]">
+          <div className="p-3.5 sm:p-4 bg-studio-950 border-t border-studio-800 flex items-center justify-between flex-wrap gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 flex-1 min-w-0 w-full sm:w-auto">
               <span className="text-xs font-mono text-studio-400 font-bold shrink-0">
                 Type here to test:
               </span>
@@ -288,7 +292,7 @@ export default function LandingPage() {
               />
             </div>
 
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-studio-900">
               <div className="flex items-center gap-1 text-xs font-mono text-studio-400">
                 <span className="hidden sm:inline">Speed:</span>
                 {[
@@ -313,9 +317,9 @@ export default function LandingPage() {
 
               <Link
                 href="/generator"
-                className="px-3.5 py-1.5 text-xs font-bold font-mono rounded-lg bg-white text-studio-950 hover:bg-studio-200 transition-colors flex items-center gap-1"
+                className="px-3.5 py-1.5 text-xs font-bold font-mono rounded-lg bg-white text-studio-950 hover:bg-studio-200 transition-colors flex items-center gap-1 shrink-0"
               >
-                <span>Open in Studio →</span>
+                <span>Open Studio →</span>
               </Link>
             </div>
           </div>

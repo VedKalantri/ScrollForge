@@ -9,27 +9,27 @@ export default function DocsPage() {
   return (
     <div className="page-transition min-h-screen flex flex-col bg-white dark:bg-studio-950 text-studio-900 dark:text-studio-100 select-none">
       {/* Top Navbar */}
-      <header className="h-20 border-b border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-950/95 backdrop-blur px-6 sm:px-12 flex items-center justify-between">
-        <div className="flex items-center gap-4">
+      <header className="h-16 sm:h-20 border-b border-studio-200 dark:border-studio-800 bg-white/95 dark:bg-studio-950/95 backdrop-blur px-4 sm:px-12 flex items-center justify-between">
+        <div className="flex items-center gap-2 sm:gap-4">
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs font-bold text-studio-600 dark:text-studio-400 hover:text-forge-500 transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 text-xs font-bold text-studio-600 dark:text-studio-400 hover:text-forge-500 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
+            <span className="hidden sm:inline">Back to Home</span>
           </Link>
           <div className="h-5 w-[1px] bg-studio-200 dark:bg-studio-800" />
-          <h1 className="text-base font-extrabold flex items-center gap-2 mb-0">
-            <BookOpen className="w-4 h-4 text-forge-500" />
-            Documentation
+          <h1 className="text-sm sm:text-base font-extrabold flex items-center gap-2 mb-0">
+            <BookOpen className="w-4 h-4 text-forge-500 shrink-0" />
+            <span>Documentation</span>
           </h1>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <Link
             href="/generator"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02]"
+            className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-bold rounded-xl bg-forge-500 hover:bg-forge-600 text-white shadow transition-all hover:scale-[1.02] shrink-0"
           >
             <span>Open Studio</span>
             <ArrowRight className="w-3.5 h-3.5" />

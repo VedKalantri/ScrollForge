@@ -71,8 +71,8 @@ export function CodeModal() {
     >
       <div className="flex flex-col gap-4">
         {/* Code Tabs */}
-        <div className="flex items-center justify-between border-b border-studio-200 dark:border-studio-800 pb-2">
-          <div className="flex items-center gap-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-studio-200 dark:border-studio-800 pb-2">
+          <div className="flex items-center gap-1 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none shrink-0">
             {[
               { id: "html", label: "HTML" },
               { id: "css", label: "CSS" },
@@ -84,7 +84,7 @@ export function CodeModal() {
                 key={id}
                 type="button"
                 onClick={() => setActiveTab(id as CodeTab)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap ${
                   activeTab === id
                     ? "bg-forge-500 text-white shadow-sm"
                     : "text-studio-600 dark:text-studio-400 hover:bg-studio-100 dark:hover:bg-studio-800"
@@ -95,7 +95,7 @@ export function CodeModal() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-end gap-2 shrink-0">
             <button
               type="button"
               onClick={handleDownloadStandalone}
@@ -103,7 +103,8 @@ export function CodeModal() {
               title="Download runnable standalone .html file"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download HTML</span>
+              <span className="hidden sm:inline">Download HTML</span>
+              <span className="sm:hidden">Download</span>
             </button>
             <button
               type="button"

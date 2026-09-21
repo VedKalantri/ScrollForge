@@ -213,7 +213,7 @@ export function PreviewCanvas() {
   return (
     <div
       ref={containerRef}
-      className="relative flex-1 h-full w-full bg-studio-100 dark:bg-studio-950 flex flex-col items-center justify-center overflow-hidden p-6 select-none"
+      className="relative flex-1 h-full w-full bg-studio-100 dark:bg-studio-950 flex flex-col items-center justify-center overflow-hidden p-3 sm:p-6 select-none"
     >
       {/* Dynamic Keyframes */}
       <style>{`
@@ -237,18 +237,18 @@ export function PreviewCanvas() {
       `}</style>
 
       {/* Top Status Bar: Static indicator & Dimensions */}
-      <div className="absolute top-4 left-6 right-6 flex items-center justify-between text-xs font-mono pointer-events-none z-20">
-        {/* Subtle static indicator - NO pulsing, NO glowing */}
-        <div className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/80 dark:bg-studio-900/80 backdrop-blur border border-studio-200 dark:border-studio-800 text-studio-700 dark:text-studio-300 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <span className="font-semibold text-[11px] tracking-wide">Live Preview</span>
+      <div className="absolute top-2.5 sm:top-4 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between text-xs font-mono pointer-events-none z-20">
+        {/* Subtle static indicator */}
+        <div className="flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-white/80 dark:bg-studio-900/80 backdrop-blur border border-studio-200 dark:border-studio-800 text-studio-700 dark:text-studio-300 shadow-sm text-[10px] sm:text-[11px]">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500" />
+          <span className="font-semibold tracking-wide">Live Preview</span>
         </div>
 
         {/* Canvas dimensions readout */}
-        <div className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/80 dark:bg-studio-900/80 backdrop-blur border border-studio-200 dark:border-studio-800 text-studio-600 dark:text-studio-400 shadow-sm">
-          <span>{deviceWidth} × {deviceHeight} PX</span>
-          <span className="text-studio-400">•</span>
-          <span className="uppercase">{canvasConfig.presetName || "Custom"}</span>
+        <div className="flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-white/80 dark:bg-studio-900/80 backdrop-blur border border-studio-200 dark:border-studio-800 text-studio-600 dark:text-studio-400 shadow-sm text-[10px] sm:text-xs">
+          <span>{deviceWidth} × {deviceHeight}</span>
+          <span className="text-studio-400 hidden sm:inline">•</span>
+          <span className="uppercase hidden sm:inline">{canvasConfig.presetName || "Custom"}</span>
           <span className="text-studio-400">•</span>
           <span>{Math.round(scale * 100)}%</span>
         </div>
